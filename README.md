@@ -22,6 +22,8 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 Trailer viewing is imperfect. I am not sure if it is a logic, network, or debugging issue, but sometimes the modally presented trailer webpage needs to be closed and reopened to view the correct trailer.
 
+I also need to implement an alternative page to load if there is no trailer available from the database. As of now the app will just crash if it cannot find the index.
+
 Within the collectionView tab, I deviated away from superheros in favor of classic horror to keep in theme with the season.  :jack_o_lantern: :ghost:
 
 I also utilized the "get/movie/{movie_id}/recommendations" call rather than "get/movie/{movie_id}/similar" becuase my objective was to return movies from the era of the Universal classic monster movies. For example, I used the movie_id for Universal's American version of Dracula (movie_id = 138) and "similar" returned generic vampire movies whereas "recommendations" returned more desireable results.
