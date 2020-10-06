@@ -8,18 +8,23 @@
 import UIKit
 import WebKit
 
-class TrailerViewController: UIViewController, WKUIDelegate {
+class TrailerViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
     var webView: WKWebView!
     
     override func loadView() {
         // hndling only webconfigoration here
+        super.loadView()
         let webConfiguration = WKWebViewConfiguration()
         self.webView = WKWebView(frame: .zero, configuration: webConfiguration)
         self.webView.uiDelegate = self
         self.view = self.webView
         
     }
+    
+    
+    
+    @IBOutlet var TrailerActivityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var TrailerPlayer: WKWebView!
     
@@ -29,9 +34,23 @@ class TrailerViewController: UIViewController, WKUIDelegate {
         static var videoURL = "someString"
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        webView.navigationDelegate = self
+        view.addSubview(TrailerActivityIndicator)
+        TrailerActivityIndicator.startAnimating()
+        TrailerActivityIndicator.hidesWhenStopped = true
+            // Do any additional setup after loading the view.
+        }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+       // Code runs when its finnished
+        TrailerActivityIndicator.stopAnimating()
+    }
+
+    
     override func viewWillAppear(_ animated: Bool) {
         getRecoveryVideoUrl { [self] (url) in
-            
             guard let url = url else {return}
             print(url)// unwarps url safely
             guard let myURL = URL(string: url) else {
@@ -82,5 +101,6 @@ class TrailerViewController: UIViewController, WKUIDelegate {
         task.resume()
         
     }
+
 }
 
