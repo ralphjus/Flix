@@ -20,13 +20,18 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 ### Notes
 
-Trailer viewing is imperfect. I am not sure if it is a logic, network, or debugging issue, but sometimes the modally presented trailer webpage needs to be closed and reopened to view the correct trailer.
+~~Trailer viewing is imperfect. I am not sure if it is a logic, network, or debugging issue, but sometimes the modally presented trailer webpage needs to be closed and reopened to view the correct trailer.~~
 
-I also need to implement an alternative page to load if there is no trailer available from the database. As of now the app will just crash if it cannot find the index.
+**UPDATE 10/5/2020:** Trailer loading is fixed thanks to TA help! I have also added activity indicators as the trailer webpages load (not pictured).
+
 
 Within the collectionView tab, I deviated away from superheros in favor of classic horror to keep in theme with the season.  :jack_o_lantern: :ghost:
 
 I also utilized the "get/movie/{movie_id}/recommendations" call rather than "get/movie/{movie_id}/similar" becuase my objective was to return movies from the era of the Universal classic monster movies. For example, I used the movie_id for Universal's American version of Dracula (movie_id = 138) and "similar" returned generic vampire movies whereas "recommendations" returned more desireable results.
+
+### TODO:
+- [ ] Implement an alternative page to load if there is no trailer available from the database. As of now the app will just crash if it cannot find the index.
+- [ ] Fix autoconstraints so that the details pages (and the newly added activity indicators) appear correctly on different devices/orientations. This will probably require orientation-dependant image manipulation that I still need to learn.
 
 [Skull Icon](https://www.flaticon.com/free-icon/skull_556209?term=skull&page=1&position=1) made by [Freepik](http://www.freepik.com/) from [Flaticon](https://www.flaticon.com/)
 
